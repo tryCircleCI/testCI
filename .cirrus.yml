@@ -1,9 +1,9 @@
 container:
-  image: node:latest
+  image: centos:7
 
 check_task:
-  node_modules_cache:
-    folder: node_modules
-    fingerprint_script: cat yarn.lock
-    populate_script: yarn install
-  test_script: yarn test
+  compile_script: gradle --parallel classes testClasses
+  check_script:
+    - echo "Here comes more than one script!"
+    - ls
+    - lscpu
